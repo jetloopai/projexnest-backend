@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException, Depends
+from fastapi.responses import Response
 from pydantic import BaseModel
 from typing import Dict, Any, Optional, List
 import os
@@ -8,6 +9,7 @@ import execution.workflow_proposals as wp
 import execution.workflow_core as wc
 import execution.workflow_signing as ws
 import execution.seed_data as sd
+import execution.pdf_generator as pdf
 
 app = FastAPI(title="ProjexNest Orchestrator")
 
@@ -139,6 +141,36 @@ def create_signing_link(payload: SigningLinkCreate):
         "token": token,
         "url": f"{base_url}/public/sign?token={token}"
     }
+
+# --- PDF Generation ---
+
+@app.get("/workflow/proposals/{proposal_id}/pdf")
+def generate_proposal_pdf(proposal_id: str):
+    """
+    Generates and returns a PDF for the given proposal.
+    """
+    # 1. Get proposal details
+    proposal_data = wp.get_proposal_full(proposal_id)
+    if not proposal_data:
+        raise HTTPException(status_code=404, detail="Proposal not found")
+    
+    proposal = proposal_data.get("proposal", {})
+    version = proposal_data.get("latest_version", {})
+    content_json = version.get("content_json", {})
+    
+    # 2. Generate PDF
+    try:
+        pdf_bytes = pdf.generate_proposal_pdf(proposal, content_json)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"PDF generation failed: {str(e)}")
+    
+    # 3. Return as downloadable file
+    filename = f"proposal_{proposal_id[:8]}.pdf"
+    return Response(
+        content=pdf_bytes,
+        media_type="application/pdf",
+        headers={"Content-Disposition": f"attachment; filename={filename}"}
+    )
 
 # --- Public Signing Routes ---
 
