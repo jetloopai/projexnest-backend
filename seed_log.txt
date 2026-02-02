@@ -1,0 +1,192 @@
+2026-02-01 22:45:30,949 --- STARTING SEED ---
+2026-02-01 22:45:30,953 Creating Org: 79f62ad5-897b-457a-838e-6b88f71d8fbd
+2026-02-01 22:45:31,728 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/organizations "HTTP/2 201 Created"
+2026-02-01 22:45:31,846 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients "HTTP/2 201 Created"
+2026-02-01 22:45:32,005 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients "HTTP/2 201 Created"
+2026-02-01 22:45:32,156 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients "HTTP/2 201 Created"
+2026-02-01 22:45:32,290 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients "HTTP/2 201 Created"
+2026-02-01 22:45:32,450 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients "HTTP/2 201 Created"
+2026-02-01 22:45:32,451 Created 5 clients
+2026-02-01 22:45:32,602 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/projects "HTTP/2 201 Created"
+2026-02-01 22:45:32,743 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/projects "HTTP/2 201 Created"
+2026-02-01 22:45:32,900 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/projects "HTTP/2 201 Created"
+2026-02-01 22:45:33,041 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/projects "HTTP/2 201 Created"
+2026-02-01 22:45:33,180 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/projects "HTTP/2 201 Created"
+2026-02-01 22:45:33,181 Created 5 projects
+2026-02-01 22:45:33,315 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/proposal_templates "HTTP/2 400 Bad Request"
+2026-02-01 22:45:33,316 SEED FAILED
+Traceback (most recent call last):
+  File "C:\Users\techs\OneDrive\Desktop\ProjexNest\execution\seed_data.py", line 85, in <module>
+    seed()
+    ~~~~^^
+  File "C:\Users\techs\OneDrive\Desktop\ProjexNest\execution\seed_data.py", line 46, in seed
+    tmpl = create_template(org_id, "Standard Bathroom Remodel", {
+        "sections": [
+    ...<2 lines>...
+        ]
+    })
+  File "C:\Users\techs\OneDrive\Desktop\ProjexNest\execution\workflow_proposals.py", line 14, in create_template
+    response = supabase.table("proposal_templates").insert(data).execute()
+  File "C:\Users\techs\AppData\Roaming\Python\Python313\site-packages\postgrest\_sync\request_builder.py", line 53, in execute
+    raise APIError(dict(json_obj))
+postgrest.exceptions.APIError: {'message': 'null value in column "template_type" of relation "proposal_templates" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (bd0ada1b-9d0e-4120-8759-c0e2721d1f35, 79f62ad5-897b-457a-838e-6b88f71d8fbd, Standard Bathroom Remodel, null, {"sections": [{"title": "Scope", "content": "Full demo and rebui..., f, 2026-02-02 04:45:33.011989+00).'}
+2026-02-01 22:46:16,984 --- STARTING SEED ---
+2026-02-01 22:46:16,985 Creating Org: 99fc4bd4-9a6c-4ab8-9181-01d13c105591
+2026-02-01 22:46:17,761 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/organizations "HTTP/2 201 Created"
+2026-02-01 22:46:17,913 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients "HTTP/2 201 Created"
+2026-02-01 22:46:18,053 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients "HTTP/2 201 Created"
+2026-02-01 22:46:18,189 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients "HTTP/2 201 Created"
+2026-02-01 22:46:18,334 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients "HTTP/2 201 Created"
+2026-02-01 22:46:18,497 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients "HTTP/2 201 Created"
+2026-02-01 22:46:18,497 Created 5 clients
+2026-02-01 22:46:18,629 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/projects "HTTP/2 201 Created"
+2026-02-01 22:46:18,765 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/projects "HTTP/2 201 Created"
+2026-02-01 22:46:18,911 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/projects "HTTP/2 201 Created"
+2026-02-01 22:46:19,066 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/projects "HTTP/2 201 Created"
+2026-02-01 22:46:19,211 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/projects "HTTP/2 201 Created"
+2026-02-01 22:46:19,211 Created 5 projects
+2026-02-01 22:46:19,357 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/proposal_templates "HTTP/2 400 Bad Request"
+2026-02-01 22:46:19,358 SEED FAILED
+Traceback (most recent call last):
+  File "C:\Users\techs\OneDrive\Desktop\ProjexNest\execution\seed_data.py", line 85, in <module>
+    seed()
+    ~~~~^^
+  File "C:\Users\techs\OneDrive\Desktop\ProjexNest\execution\seed_data.py", line 46, in seed
+    tmpl = create_template(org_id, "Standard Bathroom Remodel", {
+        "sections": [
+    ...<2 lines>...
+        ]
+    })
+  File "C:\Users\techs\OneDrive\Desktop\ProjexNest\execution\workflow_proposals.py", line 15, in create_template
+    response = supabase.table("proposal_templates").insert(data).execute()
+  File "C:\Users\techs\AppData\Roaming\Python\Python313\site-packages\postgrest\_sync\request_builder.py", line 53, in execute
+    raise APIError(dict(json_obj))
+postgrest.exceptions.APIError: {'message': 'new row for relation "proposal_templates" violates check constraint "proposal_templates_template_type_check"', 'code': '23514', 'hint': None, 'details': 'Failing row contains (2607d148-b06b-4c49-a5f0-c19aedb674d9, 99fc4bd4-9a6c-4ab8-9181-01d13c105591, Standard Bathroom Remodel, proposal, {"sections": [{"title": "Scope", "content": "Full demo and rebui..., f, 2026-02-02 04:46:19.034546+00).'}
+2026-02-01 22:47:33,150 --- STARTING SEED ---
+2026-02-01 22:47:33,151 Creating Org: 6f39dd60-d283-469a-9526-d26d035e59b1
+2026-02-01 22:47:34,766 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/organizations "HTTP/2 201 Created"
+2026-02-01 22:47:35,192 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients "HTTP/2 201 Created"
+2026-02-01 22:47:35,317 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients "HTTP/2 201 Created"
+2026-02-01 22:47:35,433 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients "HTTP/2 201 Created"
+2026-02-01 22:47:35,562 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients "HTTP/2 201 Created"
+2026-02-01 22:47:35,689 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients "HTTP/2 201 Created"
+2026-02-01 22:47:35,691 Created 5 clients
+2026-02-01 22:47:35,810 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/projects "HTTP/2 201 Created"
+2026-02-01 22:47:35,935 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/projects "HTTP/2 201 Created"
+2026-02-01 22:47:36,081 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/projects "HTTP/2 201 Created"
+2026-02-01 22:47:36,213 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/projects "HTTP/2 201 Created"
+2026-02-01 22:47:36,351 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/projects "HTTP/2 201 Created"
+2026-02-01 22:47:36,353 Created 5 projects
+2026-02-01 22:47:36,484 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/proposal_templates "HTTP/2 201 Created"
+2026-02-01 22:47:36,486 Created Template: dcfc746a-6216-4e88-af42-b57855d4a781
+2026-02-01 22:47:36,488 Generating proposal for Client 1 Homeowner's Renovation...
+2026-02-01 22:47:36,615 HTTP Request: GET https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/proposal_templates?select=%2A&id=eq.dcfc746a-6216-4e88-af42-b57855d4a781 "HTTP/2 200 OK"
+2026-02-01 22:47:36,742 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/proposals "HTTP/2 400 Bad Request"
+2026-02-01 22:47:36,743 SEED FAILED
+Traceback (most recent call last):
+  File "C:\Users\techs\OneDrive\Desktop\ProjexNest\execution\seed_data.py", line 85, in <module>
+    seed()
+    ~~~~^^
+  File "C:\Users\techs\OneDrive\Desktop\ProjexNest\execution\seed_data.py", line 57, in seed
+    result = create_proposal_from_template(org_id, p['id'], tmpl['id'], f"Proposal for {p['name']}")
+  File "C:\Users\techs\OneDrive\Desktop\ProjexNest\execution\workflow_proposals.py", line 32, in create_proposal_from_template
+    prop_resp = supabase.table("proposals").insert(prop_data).execute()
+  File "C:\Users\techs\AppData\Roaming\Python\Python313\site-packages\postgrest\_sync\request_builder.py", line 53, in execute
+    raise APIError(dict(json_obj))
+postgrest.exceptions.APIError: {'message': "Could not find the 'title' column of 'proposals' in the schema cache", 'code': 'PGRST204', 'hint': None, 'details': None}
+2026-02-01 22:48:26,775 --- STARTING SEED ---
+2026-02-01 22:48:26,778 Creating Org: 95f560de-7fe0-4177-af69-9e3799b0cca3
+2026-02-01 22:48:27,474 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/organizations "HTTP/2 201 Created"
+2026-02-01 22:48:27,666 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients "HTTP/2 201 Created"
+2026-02-01 22:48:27,776 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients "HTTP/2 201 Created"
+2026-02-01 22:48:27,913 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients "HTTP/2 201 Created"
+2026-02-01 22:48:28,035 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients "HTTP/2 201 Created"
+2026-02-01 22:48:28,150 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients "HTTP/2 201 Created"
+2026-02-01 22:48:28,151 Created 5 clients
+2026-02-01 22:48:28,288 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/projects "HTTP/2 201 Created"
+2026-02-01 22:48:28,409 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/projects "HTTP/2 201 Created"
+2026-02-01 22:48:28,545 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/projects "HTTP/2 201 Created"
+2026-02-01 22:48:28,679 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/projects "HTTP/2 201 Created"
+2026-02-01 22:48:28,807 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/projects "HTTP/2 201 Created"
+2026-02-01 22:48:28,809 Created 5 projects
+2026-02-01 22:48:28,934 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/proposal_templates "HTTP/2 201 Created"
+2026-02-01 22:48:28,935 Created Template: d6ef8b6b-c731-4a4b-9761-cd8274501ef0
+2026-02-01 22:48:28,936 Generating proposal for Client 1 Homeowner's Renovation...
+2026-02-01 22:48:29,063 HTTP Request: GET https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/proposal_templates?select=%2A&id=eq.d6ef8b6b-c731-4a4b-9761-cd8274501ef0 "HTTP/2 200 OK"
+2026-02-01 22:48:29,183 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/proposals "HTTP/2 201 Created"
+2026-02-01 22:48:29,338 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/proposal_versions "HTTP/2 400 Bad Request"
+2026-02-01 22:48:29,340 SEED FAILED
+Traceback (most recent call last):
+  File "C:\Users\techs\OneDrive\Desktop\ProjexNest\execution\seed_data.py", line 85, in <module>
+    seed()
+    ~~~~^^
+  File "C:\Users\techs\OneDrive\Desktop\ProjexNest\execution\seed_data.py", line 57, in seed
+    result = create_proposal_from_template(org_id, p['id'], tmpl['id'], f"Proposal for {p['name']}")
+  File "C:\Users\techs\OneDrive\Desktop\ProjexNest\execution\workflow_proposals.py", line 42, in create_proposal_from_template
+    ver_resp = supabase.table("proposal_versions").insert(ver_data).execute()
+  File "C:\Users\techs\AppData\Roaming\Python\Python313\site-packages\postgrest\_sync\request_builder.py", line 53, in execute
+    raise APIError(dict(json_obj))
+postgrest.exceptions.APIError: {'message': 'null value in column "org_id" of relation "proposal_versions" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (bc85f6f3-8ee6-4eaa-92a9-a4965479ade6, null, ee9ca229-d3bb-45ee-a9e3-d82e2f0331cc, 1, {"sections": [{"title": "Scope", "content": "Full demo and rebui..., null, null, 2026-02-02 04:48:29.003321+00).'}
+2026-02-01 22:48:48,981 --- STARTING SEED ---
+2026-02-01 22:48:48,983 Creating Org: 90d85a27-b0f9-4324-9620-0a23fd480dc8
+2026-02-01 22:48:49,808 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/organizations "HTTP/2 201 Created"
+2026-02-01 22:48:49,924 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients "HTTP/2 201 Created"
+2026-02-01 22:48:50,067 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients "HTTP/2 201 Created"
+2026-02-01 22:48:50,205 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients "HTTP/2 201 Created"
+2026-02-01 22:48:50,355 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients "HTTP/2 201 Created"
+2026-02-01 22:48:50,502 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients "HTTP/2 201 Created"
+2026-02-01 22:48:50,504 Created 5 clients
+2026-02-01 22:48:50,639 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/projects "HTTP/2 201 Created"
+2026-02-01 22:48:50,774 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/projects "HTTP/2 201 Created"
+2026-02-01 22:48:50,917 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/projects "HTTP/2 201 Created"
+2026-02-01 22:48:51,079 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/projects "HTTP/2 201 Created"
+2026-02-01 22:48:51,210 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/projects "HTTP/2 201 Created"
+2026-02-01 22:48:51,211 Created 5 projects
+2026-02-01 22:48:51,369 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/proposal_templates "HTTP/2 201 Created"
+2026-02-01 22:48:51,371 Created Template: 4b35b590-632e-4962-93c2-f81ce08d435d
+2026-02-01 22:48:51,371 Generating proposal for Client 1 Homeowner's Renovation...
+2026-02-01 22:48:51,502 HTTP Request: GET https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/proposal_templates?select=%2A&id=eq.4b35b590-632e-4962-93c2-f81ce08d435d "HTTP/2 200 OK"
+2026-02-01 22:48:51,667 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/proposals "HTTP/2 201 Created"
+2026-02-01 22:48:51,810 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/proposal_versions "HTTP/2 400 Bad Request"
+2026-02-01 22:48:51,811 SEED FAILED
+Traceback (most recent call last):
+  File "C:\Users\techs\OneDrive\Desktop\ProjexNest\execution\seed_data.py", line 85, in <module>
+    seed()
+    ~~~~^^
+  File "C:\Users\techs\OneDrive\Desktop\ProjexNest\execution\seed_data.py", line 57, in seed
+    result = create_proposal_from_template(org_id, p['id'], tmpl['id'], f"Proposal for {p['name']}")
+  File "C:\Users\techs\OneDrive\Desktop\ProjexNest\execution\workflow_proposals.py", line 43, in create_proposal_from_template
+    ver_resp = supabase.table("proposal_versions").insert(ver_data).execute()
+  File "C:\Users\techs\AppData\Roaming\Python\Python313\site-packages\postgrest\_sync\request_builder.py", line 53, in execute
+    raise APIError(dict(json_obj))
+postgrest.exceptions.APIError: {'message': 'null value in column "created_by" of relation "proposal_versions" violates not-null constraint', 'code': '23502', 'hint': None, 'details': 'Failing row contains (d18d4ee6-b035-45a7-a544-b45233ae7faa, 90d85a27-b0f9-4324-9620-0a23fd480dc8, 66c51ad2-80c8-415e-9485-0b86e8bf8e68, 1, {"sections": [{"title": "Scope", "content": "Full demo and rebui..., null, null, 2026-02-02 04:48:51.489366+00).'}
+2026-02-01 22:50:30,077 --- STARTING SEED ---
+2026-02-01 22:50:30,079 Creating Org: cd5ddbbc-18f6-4ade-8478-890ad5479403
+2026-02-01 22:50:31,844 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/organizations "HTTP/2 201 Created"
+2026-02-01 22:50:32,358 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients "HTTP/2 201 Created"
+2026-02-01 22:50:32,825 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients "HTTP/2 201 Created"
+2026-02-01 22:50:33,292 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients "HTTP/2 201 Created"
+2026-02-01 22:50:33,729 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients "HTTP/2 201 Created"
+2026-02-01 22:50:34,215 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients "HTTP/2 201 Created"
+2026-02-01 22:50:34,217 Created 5 clients
+2026-02-01 22:50:34,916 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/projects "HTTP/2 201 Created"
+2026-02-01 22:50:35,393 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/projects "HTTP/2 201 Created"
+2026-02-01 22:50:35,829 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/projects "HTTP/2 201 Created"
+2026-02-01 22:50:36,362 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/projects "HTTP/2 201 Created"
+2026-02-01 22:50:36,885 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/projects "HTTP/2 201 Created"
+2026-02-01 22:50:36,886 Created 5 projects
+2026-02-01 22:50:37,408 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/proposal_templates "HTTP/2 201 Created"
+2026-02-01 22:50:37,408 Created Template: 0535e8ec-e422-4b6c-9399-d7930d0e37f7
+2026-02-01 22:50:37,409 Generating proposal for Client 1 Homeowner's Renovation...
+2026-02-01 22:50:37,897 HTTP Request: GET https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/proposal_templates?select=%2A&id=eq.0535e8ec-e422-4b6c-9399-d7930d0e37f7 "HTTP/2 200 OK"
+2026-02-01 22:50:38,346 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/proposals "HTTP/2 201 Created"
+2026-02-01 22:50:38,798 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/proposal_versions "HTTP/2 201 Created"
+2026-02-01 22:50:38,803 Generating proposal for Client 2 Homeowner's Renovation...
+2026-02-01 22:50:39,210 HTTP Request: GET https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/proposal_templates?select=%2A&id=eq.0535e8ec-e422-4b6c-9399-d7930d0e37f7 "HTTP/2 200 OK"
+2026-02-01 22:50:39,415 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/proposals "HTTP/2 201 Created"
+2026-02-01 22:50:39,877 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/proposal_versions "HTTP/2 201 Created"
+2026-02-01 22:50:39,878 --- SEED COMPLETE ---
+2026-02-01 23:12:20,283 HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+2026-02-01 23:12:34,661 HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+2026-02-01 23:12:35,519 HTTP Request: POST https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/signing_sessions "HTTP/2 400 Bad Request"
+2026-02-01 23:13:49,104 HTTP Request: GET https://cqkozfaubdmpzwbpiatc.supabase.co/rest/v1/clients?select=%2A&org_id=eq.test "HTTP/2 400 Bad Request"
