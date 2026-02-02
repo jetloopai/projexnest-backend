@@ -61,11 +61,19 @@ class PublicSign(BaseModel):
     signature_data: str # Base64 or string
     consent: bool = True
 
+class OrganizationCreate(BaseModel):
+    name: str
+    user_id: str
+
 # --- Core Routes ---
 
 @app.get("/")
 def read_root():
     return {"message": "ProjexNest Orchestrator Running. v1.1"}
+
+@app.post("/workflow/organizations")
+def create_organization(payload: OrganizationCreate):
+    return wc.create_organization(payload.name, payload.user_id)
 
 @app.post("/workflow/clients")
 def create_client(payload: ClientCreate):

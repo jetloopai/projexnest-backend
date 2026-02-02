@@ -4,6 +4,21 @@ from execution.supabase_client import get_client
 supabase = get_client()
 
 # --- Clients ---
+def create_organization(name: str, user_id: str) -> Dict[str, Any]:
+    # 1. Create Org
+    org_resp = supabase.table("organizations").insert({"name": name}).execute()
+    org_id = org_resp.data[0]["id"]
+    
+    # 2. Add User as Owner
+    member_data = {
+        "org_id": org_id,
+        "user_id": user_id,
+        "role": "owner"
+    }
+    supabase.table("org_memberships").insert(member_data).execute()
+    
+    return org_resp.data[0]
+
 def create_client(org_id: str, name: str, email: str, phone: str = None, address: str = None) -> Dict[str, Any]:
     data = {
         "org_id": org_id,
