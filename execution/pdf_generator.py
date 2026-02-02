@@ -2,17 +2,27 @@ from weasyprint import HTML, CSS
 from typing import Dict, Any
 import json
 
-def render_proposal_html(proposal: Dict[str, Any], content_json: Dict[str, Any]) -> str:
+def render_proposal_html(proposal: Dict[str, Any], content_json: Dict[str, Any], client: Dict[str, Any] = None, project: Dict[str, Any] = None) -> str:
     """
-    Renders a proposal's content_json into an HTML string suitable for PDF conversion.
+    Renders a proposal's data into an HTML string suitable for PDF conversion.
+    Uses fields from the proposal table directly (scope_of_work, total, etc.)
+    Falls back to content_json for template-based content.
     """
-    title = proposal.get("title", "Proposal")
+    # Primary data from proposals table
+    title = proposal.get("name", proposal.get("title", "Proposal"))
+    scope = proposal.get("scope_of_work", "") or content_json.get("scope", "")
+    total = proposal.get("total", 0) or 0
+    legal_terms = proposal.get("legal_terms", "") or content_json.get("terms", "")
+    payment_schedule = proposal.get("payment_schedule", "") or ""
     
-    # Extract sections from content_json
+    # Related data
+    client_name = client.get("name", "Client") if client else "Client"
+    client_email = client.get("email", "") if client else ""
+    project_name = project.get("name", "Project") if project else "Project"
+    
+    # Extract sections from content_json (if template-based)
     sections = content_json.get("sections", [])
-    scope = content_json.get("scope", "")
     pricing = content_json.get("pricing", [])
-    terms = content_json.get("terms", "")
     
     # Build sections HTML
     sections_html = ""
@@ -24,7 +34,7 @@ def render_proposal_html(proposal: Dict[str, Any], content_json: Dict[str, Any])
         </div>
         """
     
-    # Build pricing table
+    # Build pricing table (from content_json if available, otherwise use total)
     pricing_html = ""
     if pricing:
         pricing_html = """
@@ -36,10 +46,10 @@ def render_proposal_html(proposal: Dict[str, Any], content_json: Dict[str, Any])
                 </thead>
                 <tbody>
         """
-        total = 0
+        total_sum = 0
         for item in pricing:
             amount = item.get('amount', 0)
-            total += amount
+            total_sum += amount
             pricing_html += f"""
                 <tr>
                     <td>{item.get('name', '')}</td>
@@ -50,8 +60,20 @@ def render_proposal_html(proposal: Dict[str, Any], content_json: Dict[str, Any])
         pricing_html += f"""
                 </tbody>
                 <tfoot>
-                    <tr><td colspan="2"><strong>Total</strong></td><td><strong>${total:,.2f}</strong></td></tr>
+                    <tr><td colspan="2"><strong>Total</strong></td><td><strong>${total_sum:,.2f}</strong></td></tr>
                 </tfoot>
+            </table>
+        </div>
+        """
+    elif total:
+        # Simple total from proposal table
+        pricing_html = f"""
+        <div class="section">
+            <h2>Pricing</h2>
+            <table>
+                <tbody>
+                    <tr><td><strong>Total</strong></td><td><strong>${total:,.2f}</strong></td></tr>
+                </tbody>
             </table>
         </div>
         """
@@ -129,13 +151,23 @@ def render_proposal_html(proposal: Dict[str, Any], content_json: Dict[str, Any])
             <p>Professional Proposal</p>
         </div>
         
+        <div class="section">
+            <h2>Project Details</h2>
+            <table>
+                <tr><td><strong>Client</strong></td><td>{client_name}</td></tr>
+                <tr><td><strong>Project</strong></td><td>{project_name}</td></tr>
+            </table>
+        </div>
+        
         {sections_html}
         
         {f'<div class="section"><h2>Scope of Work</h2><p>{scope}</p></div>' if scope else ''}
         
         {pricing_html}
         
-        {f'<div class="terms"><h3>Terms & Conditions</h3><p>{terms}</p></div>' if terms else ''}
+        {f'<div class="section"><h2>Payment Schedule</h2><p>{payment_schedule}</p></div>' if payment_schedule else ''}
+        
+        {f'<div class="terms"><h3>Terms & Conditions</h3><p>{legal_terms}</p></div>' if legal_terms else ''}
         
         <div class="signature-block">
             <p><strong>Acceptance</strong></p>
@@ -157,11 +189,11 @@ def generate_pdf_from_html(html_content: str) -> bytes:
     pdf_bytes = html.write_pdf()
     return pdf_bytes
 
-def generate_proposal_pdf(proposal: Dict[str, Any], content_json: Dict[str, Any]) -> bytes:
+def generate_proposal_pdf(proposal: Dict[str, Any], content_json: Dict[str, Any], client: Dict[str, Any] = None, project: Dict[str, Any] = None) -> bytes:
     """
     High-level function: Takes a proposal and its content, returns PDF bytes.
     """
-    html = render_proposal_html(proposal, content_json)
+    html = render_proposal_html(proposal, content_json, client, project)
     return generate_pdf_from_html(html)
 
 def upload_pdf_to_storage(client, bucket_name: str, path: str, pdf_bytes: bytes) -> Dict[str, Any]:

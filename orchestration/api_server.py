@@ -155,12 +155,14 @@ def generate_proposal_pdf(proposal_id: str):
         raise HTTPException(status_code=404, detail="Proposal not found")
     
     proposal = proposal_data.get("proposal", {})
+    client = proposal_data.get("client", {})
+    project = proposal_data.get("project", {})
     version = proposal_data.get("latest_version", {})
-    content_json = version.get("content_json", {})
+    content_json = version.get("content_json", {}) if version else {}
     
     # 2. Generate PDF
     try:
-        pdf_bytes = pdf.generate_proposal_pdf(proposal, content_json)
+        pdf_bytes = pdf.generate_proposal_pdf(proposal, content_json, client, project)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"PDF generation failed: {str(e)}")
     

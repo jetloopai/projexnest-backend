@@ -77,16 +77,35 @@ def list_proposals(org_id: str) -> List[Dict[str, Any]]:
     return response.data
 
 def get_proposal_full(proposal_id: str) -> Dict[str, Any]:
-    # Get proposal + versions
-    p_resp = supabase.table("proposals").select("*").eq("id", proposal_id).single().execute()
-    v_resp = supabase.table("proposal_versions").select("*").eq("proposal_id", proposal_id).order("version_number", desc=True).execute()
+    """
+    Fetches complete proposal data including:
+    - Proposal details (scope_of_work, total, etc.)
+    - Related client and project names
+    - Latest version for version-specific data
+    """
+    # Get proposal with related data
+    p_resp = supabase.table("proposals").select(
+        "*, clients(id, name, email), projects(id, name)"
+    ).eq("id", proposal_id).single().execute()
+    
+    # Get versions
+    v_resp = supabase.table("proposal_versions").select("*").eq(
+        "proposal_id", proposal_id
+    ).order("version_number", desc=True).execute()
     
     if not p_resp.data:
         return None
-        
+    
+    proposal = p_resp.data
+    versions = v_resp.data if v_resp.data else []
+    latest_version = versions[0] if versions else {}
+    
     return {
-        "proposal": p_resp.data,
-        "versions": v_resp.data
+        "proposal": proposal,
+        "client": proposal.get("clients"),
+        "project": proposal.get("projects"),
+        "versions": versions,
+        "latest_version": latest_version
     }
 
 def update_proposal_content(proposal_id: str, content: Dict[str, Any], created_by: str) -> Dict[str, Any]:

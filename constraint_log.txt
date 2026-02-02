@@ -1,0 +1,15 @@
+=== TEMPLATE CONSTRAINTS ===
+  pg_ts_template_tmplname_index: UNIQUE (tmplname, tmplnamespace)
+  pg_ts_template_oid_index: PRIMARY KEY (oid)
+  proposal_templates_template_type_check: CHECK ((template_type = ANY (ARRAY['client_proposal'::text, 'subcontract_agreement'::text])))
+  proposal_templates_pkey: PRIMARY KEY (id)
+  proposal_templates_org_id_fkey: FOREIGN KEY (org_id) REFERENCES organizations(id) ON DELETE CASCADE
+
+=== PROPOSAL_TEMPLATES COLUMNS ===
+  id (uuid), nullable=NO, default=gen_random_uuid()
+  org_id (uuid), nullable=NO, default=None
+  name (text), nullable=NO, default=None
+  template_type (text), nullable=NO, default=None
+  content_json (jsonb), nullable=NO, default='{}'::jsonb
+  is_default (boolean), nullable=NO, default=false
+  created_at (timestamp with time zone), nullable=NO, default=now()
